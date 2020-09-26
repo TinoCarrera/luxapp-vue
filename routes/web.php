@@ -23,6 +23,24 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia\Inertia::render('Dashboard');
 })->name('dashboard');
 
-Route::get('/categories', [CategoryController::class, 'index'])
+// Categories
+
+Route::get('categories', [CategoryController::class, 'index'])
     ->name('categories')
+    ->middleware(['auth:sanctum', 'verified']);
+
+Route::get('categories/{category}/edit', [CategoryController::class, 'edit'])
+    ->name('categories.edit')
+    ->middleware(['auth:sanctum', 'verified']);
+
+Route::get('categories/create', [CategoryController::class, 'create'])
+    ->name('categories.create')
+    ->middleware(['auth:sanctum', 'verified']);
+
+Route::put('categories/{category}', [CategoryController::class, 'update'])
+    ->name('categories.update')
+    ->middleware(['auth:sanctum', 'verified']);
+
+Route::delete('categories/{category}', [CategoryController::class, 'destroy'])
+    ->name('categories.destroy')
     ->middleware(['auth:sanctum', 'verified']);
