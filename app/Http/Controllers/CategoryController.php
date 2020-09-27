@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -38,7 +39,20 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required'
+        ]);
+
+        $slug = Str::slug($request->name);
+
+        Category::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'slug' => $slug
+        ]);
+
+        return redirect()->route('categories')->with('success', 'Categoría creada.');
     }
 
     /**
