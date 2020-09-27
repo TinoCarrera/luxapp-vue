@@ -197,6 +197,7 @@
 
         <!-- Page Content -->
         <main>
+            <flash-messages/>
             <slot></slot>
         </main>
 
@@ -213,6 +214,7 @@
     import JetDropdownLink from './../Jetstream/DropdownLink'
     import JetNavLink from './../Jetstream/NavLink'
     import JetResponsiveNavLink from './../Jetstream/ResponsiveNavLink'
+    import FlashMessages from './../Pages/Shared/FlashMessages'
 
     export default {
         components: {
@@ -222,6 +224,7 @@
             JetDropdownLink,
             JetNavLink,
             JetResponsiveNavLink,
+            FlashMessages,
         },
 
         data() {
