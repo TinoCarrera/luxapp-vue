@@ -25,22 +25,26 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 // Categories
 
-Route::get('categories', [CategoryController::class, 'index'])
+Route::get('/categories', [CategoryController::class, 'index'])
     ->name('categories')
     ->middleware(['auth:sanctum', 'verified']);
 
-Route::get('categories/{category}/edit', [CategoryController::class, 'edit'])
+Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])
     ->name('categories.edit')
     ->middleware(['auth:sanctum', 'verified']);
 
-Route::get('categories/create', [CategoryController::class, 'create'])
+Route::get('/categories/create', [CategoryController::class, 'create'])
     ->name('categories.create')
     ->middleware(['auth:sanctum', 'verified']);
 
-Route::put('categories/{category}', [CategoryController::class, 'update'])
+Route::post('/categories/store', [CategoryController::class, 'store'])
+    ->name('categories.store')
+    ->middleware(['auth:sanctum', 'verified']);
+
+Route::put('/categories/{category}', [CategoryController::class, 'update'])
     ->name('categories.update')
     ->middleware(['auth:sanctum', 'verified']);
 
-Route::delete('categories/{category}', [CategoryController::class, 'destroy'])
+Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])
     ->name('categories.destroy')
     ->middleware(['auth:sanctum', 'verified']);
