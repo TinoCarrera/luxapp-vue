@@ -1,14 +1,19 @@
 <template>
-  <button :disabled="loading" class="flex items-center">
+  <primary-button :disabled="loading">
     <div v-if="loading" class="btn-spinner mr-2" />
     <slot />
-  </button>
+  </primary-button>
 </template>
 
 <script>
-export default {
-  props: {
-    loading: Boolean,
-  },
-}
+  import PrimaryButton from './../../Jetstream/Button'
+
+  export default {
+    components: {
+      PrimaryButton,
+    },
+    props: {
+      loading: Boolean,
+    },
+  }
 </script>
