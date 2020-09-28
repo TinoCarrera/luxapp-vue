@@ -1,67 +1,94 @@
 <template>
     <app-layout>
+
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Categoría / {{ category.name }}
+                Editar categoría: {{ category.name }}
             </h2>
         </template>
-        <div class="flex flex-col">
-            <div class="h-screen flex flex-col">
-        <div class="flex flex-grow overflow-hidden">
-            <div class="flex-1 px-4 py-8 md:p-12 overflow-y-auto" scroll-region>
-                <div class="bg-white rounded shadow overflow-hidden w-full">
+
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <form @submit.prevent="submit">
                         <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
-                        <text-input v-model="form.name" class="pr-6 pb-8 w-full lg:w-1/2" label="Nombre" />
-                        <text-input v-model="form.description" class="pr-6 pb-8 w-full lg:w-1/2" label="Descripción" />
+                            <text-input v-model="form.name" :error="errors.name" class="pr-6 pb-8 w-full lg:w-1/2" label="Nombre" />
+                            <text-input v-model="form.description" :error="errors.description" class="pr-6 pb-8 w-full lg:w-1/2" label="Descripción" />
                         </div>
                         <div class="px-8 py-4 bg-gray-100 border-t border-gray-200 flex items-center">
-                        <button class="text-red-600 hover:underline" tabindex="-1" type="button" @click="destroy">Eliminar categoría</button>
-                        <button class="btn-indigo ml-auto" type="submit">Actualizar categoría</button>
+                            <danger-button @click.native="confirmDestroy">Eliminar categoría</danger-button>
+                            <loading-button :loading="sending" class="ml-auto">Actualizar categoría</loading-button>
                         </div>
+                        <confirmation :show="confirmingDestroy" @close="confirmingDestroy = false">
+                            <template #title>
+                                Eliminar categoría
+                            </template>
+                            <template #content>
+                                ¿Estás seguro que quieres eliminar esta categoría?
+                            </template>
+                            <template #footer>
+                                <secondary-button @click.native="confirmingDestroy = false">
+                                    Regresar
+                                </secondary-button>
+                                <danger-button class="ml-2" @click.native="destroy" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                                    Continuar
+                                </danger-button>
+                            </template>
+                        </confirmation>
                     </form>
                 </div>
             </div>
         </div>
-                       </div>
-            </div> 
+
     </app-layout>
 </template>
 
 <script>
     import AppLayout from './../../Layouts/AppLayout'
-    import Icon from './../Shared/Icon'
     import TextInput from './../Shared/TextInput'
+    import DangerButton from './../../Jetstream/DangerButton'
+    import LoadingButton from './../Shared/LoadingButton'
+    import SecondaryButton from './../../Jetstream/SecondaryButton'
+    import Confirmation from './../Shared/Confirmation'
 
     export default {
         components: {
             AppLayout,
-            Icon,
             TextInput,
+            DangerButton,
+            LoadingButton,
+            SecondaryButton,
+            Confirmation,
         },
         props: {
             category: Object,
+            errors: Object,
         },
         remember: 'form',
         data() {
             return {
+                confirmingDestroy: false,
                 sending: false,
-                form: {
+                form: this.$inertia.form({
                     name: this.category.name,
                     description: this.category.description,
-                },
+                })
             }
         },
         methods: {
             submit() {
-            this.sending = true
-            this.$inertia.put(this.route('categories/update', this.category.id), this.form)
-                .then(() => this.sending = false)
+                this.sending = true
+                this.form.put('/categories/' + this.category.id)
+                    .then(() => this.sending = false)
+            },
+            confirmDestroy() {
+                this.confirmingDestroy = true
             },
             destroy() {
-            if (confirm('Are you sure you want to delete this category?')) {
-                this.$inertia.delete(this.route('categories.destroy', this.category.id))
-            }
+                this.form.delete('/categories/' + this.category.id)
+                    .then(() => {
+                        preserveScroll: true
+                    })
             },
         },
     }
