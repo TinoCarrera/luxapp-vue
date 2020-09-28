@@ -44,12 +44,10 @@ class CategoryController extends Controller
             'description' => 'required'
         ]);
 
-        $slug = Str::slug($request->name);
-
         Category::create([
             'name' => $request->name,
             'description' => $request->description,
-            'slug' => $slug
+            'slug' => Str::slug($request->name)
         ]);
 
         return redirect()->route('categories')->with('success', 'Categoría creada.');
@@ -92,7 +90,18 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required'
+        ]);
+
+        $category->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'slug' => Str::slug($request->name)
+        ]);
+
+        return redirect()->route('categories')->with('success', 'Categoría actualizada.');
     }
 
     /**
@@ -103,6 +112,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->route('categories')->with('success', 'Categoría eliminada.');
     }
 }
