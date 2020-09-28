@@ -8,7 +8,9 @@
                         <!-- Logo -->
                         <div class="flex-shrink-0 flex items-center">
                             <a href="/dashboard">
-                                <jet-application-mark class="block h-9 w-auto" />
+                                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                                    LuxApp
+                                </h2>
                             </a>
                         </div>
 
@@ -36,11 +38,11 @@
                                 <template #content>
                                     <!-- Account Management -->
                                     <div class="block px-4 py-2 text-xs text-gray-400">
-                                        Manage Account
+                                        {{ $page.user.name }}
                                     </div>
 
                                     <jet-dropdown-link href="/user/profile">
-                                        Profile
+                                        Perfil
                                     </jet-dropdown-link>
 
                                     <jet-dropdown-link href="/user/api-tokens" v-if="$page.jetstream.hasApiFeatures">
@@ -88,7 +90,7 @@
                                     <!-- Authentication -->
                                     <form @submit.prevent="logout">
                                         <jet-dropdown-link as="button">
-                                            Logout
+                                            Salir
                                         </jet-dropdown-link>
                                     </form>
                                 </template>
@@ -134,7 +136,7 @@
 
                     <div class="mt-3 space-y-1">
                         <jet-responsive-nav-link href="/user/profile" :active="$page.currentRouteName == 'profile.show'">
-                            Profile
+                            Perfil
                         </jet-responsive-nav-link>
 
                         <jet-responsive-nav-link href="/user/api-tokens" :active="$page.currentRouteName == 'api-tokens.index'" v-if="$page.jetstream.hasApiFeatures">
@@ -144,7 +146,7 @@
                         <!-- Authentication -->
                         <form method="POST" @submit.prevent="logout">
                             <jet-responsive-nav-link as="button">
-                                Logout
+                                Salir
                             </jet-responsive-nav-link>
                         </form>
 
@@ -197,8 +199,12 @@
 
         <!-- Page Content -->
         <main>
-            <flash-messages/>
-            <slot></slot>
+            <div class="py-8">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <flash-messages/>
+                    <slot></slot>
+                </div>
+            </div>
         </main>
 
         <!-- Modal Portal -->
