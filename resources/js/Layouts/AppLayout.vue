@@ -121,7 +121,6 @@
         <main>
             <div class="py-8">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <flash-messages/>
                     <slot></slot>
                 </div>
             </div>
@@ -138,7 +137,7 @@
     import JetDropdownLink from './../Jetstream/DropdownLink'
     import JetNavLink from './../Jetstream/NavLink'
     import JetResponsiveNavLink from './../Jetstream/ResponsiveNavLink'
-    import FlashMessages from './../Pages/Shared/FlashMessages'
+    import FlashMessages from './../Shared/FlashMessages'
 
     export default {
         components: {
