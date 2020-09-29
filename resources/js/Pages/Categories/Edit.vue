@@ -83,7 +83,6 @@
             destroy() {
                 this.form.delete('/categories/' + this.category.id)
                     .then(() => {
-                        preserveScroll: true
                     })
             },
         },

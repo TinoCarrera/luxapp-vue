@@ -61,7 +61,7 @@
             PrimaryButton,
             Pagination,
         },
-         props: {
+        props: {
             categories: Array,
         },
     }

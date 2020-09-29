@@ -2987,9 +2987,7 @@ __webpack_require__.r(__webpack_exports__);
       this.confirmingDestroy = true;
     },
     destroy: function destroy() {
-      this.form["delete"]('/categories/' + this.category.id).then(function () {
-        preserveScroll: true;
-      });
+      this.form["delete"]('/categories/' + this.category.id).then(function () {});
     }
   }
 });
@@ -25739,7 +25737,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                    Volver\n                "
+                            "\n                    Regresar\n                "
                           )
                         ]
                       ),
