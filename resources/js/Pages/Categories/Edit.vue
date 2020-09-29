@@ -41,11 +41,11 @@
 
 <script>
     import AppLayout from './../../Layouts/AppLayout'
-    import TextInput from './../Shared/TextInput'
+    import TextInput from './../../Shared/TextInput'
     import DangerButton from './../../Jetstream/DangerButton'
-    import LoadingButton from './../Shared/LoadingButton'
+    import LoadingButton from './../../Shared/LoadingButton'
     import SecondaryButton from './../../Jetstream/SecondaryButton'
-    import Confirmation from './../Shared/Confirmation'
+    import Confirmation from './../../Shared/Confirmation'
 
     export default {
         components: {
