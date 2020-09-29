@@ -16,9 +16,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Categories/Index', [
+        return Inertia::render('Categories/Show', [
             'categories' => Category::query()
-                ->orderBy('id')
+                ->orderByDesc('id')
                 ->paginate(5),
         ]);
     }
@@ -52,7 +52,7 @@ class CategoryController extends Controller
             'slug' => Str::slug($request->name)
         ]);
 
-        return redirect()->route('categories')->with('success', 'Categoría creada.');
+        return back()->with('success', 'Categoría creada.');
     }
 
     /**
