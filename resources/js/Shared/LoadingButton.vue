@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import PrimaryButton from './../../Jetstream/Button'
+  import PrimaryButton from './../Jetstream/Button'
 
   export default {
     components: {
