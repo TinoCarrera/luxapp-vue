@@ -63,7 +63,7 @@
                     name: null,
                     description: null,
                 }, {
-                    bag: 'createCategory',
+                    bag: 'default',
                 }),
             }
         },
