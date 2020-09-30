@@ -74,7 +74,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return Inertia::render('Categories/Edit', [
+        return Inertia::render('Categories/EditCategory', [
             'category' => [
                 'id' => $category->id,
                 'name' => $category->name,
