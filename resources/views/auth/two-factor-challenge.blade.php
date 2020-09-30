@@ -1,8 +1,5 @@
 <x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+    <x-authentication-card>
 
         <div x-data="{ recovery: false }">
             <div class="mb-4 text-sm text-gray-600" x-show="! recovery">
@@ -13,7 +10,7 @@
                 {{ __('Please confirm access to your account by entering one of your emergency recovery codes.') }}
             </div>
 
-            <x-jet-validation-errors class="mb-4" />
+            <x-validation-errors class="mb-4" />
 
             <form method="POST" action="/two-factor-challenge">
                 @csrf
@@ -53,5 +50,5 @@
                 </div>
             </form>
         </div>
-    </x-jet-authentication-card>
+    </x-authentication-card>
 </x-guest-layout>

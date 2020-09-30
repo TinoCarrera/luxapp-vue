@@ -1,10 +1,7 @@
 <x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+    <x-authentication-card>
 
-        <x-jet-validation-errors class="mb-4" />
+        <x-validation-errors class="mb-4" />
 
         <form method="POST" action="{{ route('password.update') }}">
             @csrf
@@ -32,5 +29,5 @@
                 </x-jet-button>
             </div>
         </form>
-    </x-jet-authentication-card>
+    </x-authentication-card>
 </x-guest-layout>
