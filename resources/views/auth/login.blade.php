@@ -13,18 +13,18 @@
             @csrf
 
             <div>
-                <x-jet-label value="{{ __('Correo electrónico') }}" />
-                <x-jet-input class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <x-label for="email" value="{{ __('Correo electrónico') }}" />
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             </div>
 
             <div class="mt-4">
-                <x-jet-label value="{{ __('Contraseña') }}" />
-                <x-jet-input class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+                <x-label for="password" value="{{ __('Contraseña') }}" />
+                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
             </div>
 
             <div class="block mt-4">
-                <label class="flex items-center">
-                    <input type="checkbox" class="form-checkbox" name="remember">
+                <label for="remember_me" class="flex items-center">
+                    <input id="remember_me" type="checkbox" class="form-checkbox" name="remember">
                     <span class="ml-2 text-sm text-gray-600">{{ __('Recordarme') }}</span>
                 </label>
             </div>
@@ -36,9 +36,9 @@
                     </a>
                 @endif
 
-                <x-jet-button class="ml-4">
+                <x-button class="ml-4">
                     {{ __('Ingresar') }}
-                </x-jet-button>
+                </x-button>
             </div>
         </form>
     </x-authentication-card>
