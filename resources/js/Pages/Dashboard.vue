@@ -1,9 +1,7 @@
 <template>
     <app-layout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Dashboard
-            </h2>
+            Dashboard
         </template>
 
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
@@ -14,7 +12,7 @@
 
 <script>
     import AppLayout from './../Layouts/AppLayout'
-    import Welcome from './../Jetstream/Welcome'
+    import Welcome from './../Shared/Welcome'
 
     export default {
         components: {

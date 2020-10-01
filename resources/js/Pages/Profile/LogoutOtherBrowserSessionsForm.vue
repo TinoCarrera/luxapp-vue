@@ -1,5 +1,5 @@
 <template>
-    <jet-action-section>
+    <action-section>
         <template #title>
             Sesiones
         </template>
@@ -44,17 +44,17 @@
             </div>
 
             <div class="flex items-center mt-5">
-                <jet-button @click.native="confirmLogout">
+                <x-button @click.native="confirmLogout">
                     Salir de todas las sesiones
-                </jet-button>
+                </x-button>
 
-                <jet-action-message :on="form.recentlySuccessful" class="ml-3">
+                <action-message :on="form.recentlySuccessful" class="ml-3">
                     Listo.
-                </jet-action-message>
+                </action-message>
             </div>
 
             <!-- Logout Other Devices Confirmation Modal -->
-            <jet-dialog-modal :show="confirmingLogout" @close="confirmingLogout = false">
+            <dialog-modal :show="confirmingLogout" @close="confirmingLogout = false">
                 <template #title>
                     Salir de todas las sesiones
                 </template>
@@ -63,49 +63,49 @@
                     Por favor introduce tu contraseña para confirmar que quieres salir de todas las sesiones de tus dispositivos.
 
                     <div class="mt-4">
-                        <jet-input type="password" class="mt-1 block w-3/4" placeholder="Contraseña"
+                        <x-input type="password" class="mt-1 block w-3/4" placeholder="Contraseña"
                                     ref="password"
                                     v-model="form.password"
                                     @keyup.enter.native="logoutOtherBrowserSessions" />
 
-                        <jet-input-error :message="form.error('password')" class="mt-2" />
+                        <input-error :message="form.error('password')" class="mt-2" />
                     </div>
                 </template>
 
                 <template #footer>
-                    <jet-secondary-button @click.native="confirmingLogout = false">
-                        Volver
-                    </jet-secondary-button>
+                    <secondary-button @click.native="confirmingLogout = false">
+                        Regresar
+                    </secondary-button>
 
-                    <jet-button class="ml-2" @click.native="logoutOtherBrowserSessions" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    <x-button class="ml-2" @click.native="logoutOtherBrowserSessions" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                         Salir de todas las sesiones
-                    </jet-button>
+                    </x-button>
                 </template>
-            </jet-dialog-modal>
+            </dialog-modal>
         </template>
-    </jet-action-section>
+    </action-section>
 </template>
 
 <script>
-    import JetActionMessage from './../../Jetstream/ActionMessage'
-    import JetActionSection from './../../Jetstream/ActionSection'
-    import JetButton from './../../Jetstream/Button'
-    import JetDialogModal from './../../Jetstream/DialogModal'
-    import JetInput from './../../Jetstream/Input'
-    import JetInputError from './../../Jetstream/InputError'
-    import JetSecondaryButton from './../../Jetstream/SecondaryButton'
+    import ActionMessage from './../../Shared/ActionMessage'
+    import ActionSection from './../../Shared/ActionSection'
+    import XButton from './../../Shared/Button'
+    import DialogModal from './../../Shared/DialogModal'
+    import XInput from './../../Shared/Input'
+    import InputError from './../../Shared/InputError'
+    import SecondaryButton from './../../Shared/SecondaryButton'
 
     export default {
         props: ['sessions'],
 
         components: {
-            JetActionMessage,
-            JetActionSection,
-            JetButton,
-            JetDialogModal,
-            JetInput,
-            JetInputError,
-            JetSecondaryButton,
+            ActionMessage,
+            ActionSection,
+            XButton,
+            DialogModal,
+            XInput,
+            InputError,
+            SecondaryButton,
         },
 
         data() {

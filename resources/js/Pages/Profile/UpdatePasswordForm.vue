@@ -1,5 +1,5 @@
 <template>
-    <jet-form-section @submitted="updatePassword">
+    <form-section @submitted="updatePassword">
         <template #title>
             Actualizar contraseña
         </template>
@@ -10,52 +10,52 @@
 
         <template #form>
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="current_password" value="Contraseña actual" />
-                <jet-input id="current_password" type="password" class="mt-1 block w-full" v-model="form.current_password" ref="current_password" autocomplete="current-password" />
-                <jet-input-error :message="form.error('current_password')" class="mt-2" />
+                <x-label for="current_password" value="Contraseña actual" />
+                <x-input id="current_password" type="password" class="mt-1 block w-full" v-model="form.current_password" ref="current_password" autocomplete="current-password" />
+                <input-error :message="form.error('current_password')" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="password" value="Nueva contraseña" />
-                <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" autocomplete="new-password" />
-                <jet-input-error :message="form.error('password')" class="mt-2" />
+                <x-label for="password" value="Nueva contraseña" />
+                <x-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" autocomplete="new-password" />
+                <input-error :message="form.error('password')" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="password_confirmation" value="Confirmar contraseña" />
-                <jet-input id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" autocomplete="new-password" />
-                <jet-input-error :message="form.error('password_confirmation')" class="mt-2" />
+                <x-label for="password_confirmation" value="Confirmar contraseña" />
+                <x-input id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" autocomplete="new-password" />
+                <input-error :message="form.error('password_confirmation')" class="mt-2" />
             </div>
         </template>
 
         <template #actions>
-            <jet-action-message :on="form.recentlySuccessful" class="mr-3">
+            <action-message :on="form.recentlySuccessful" class="mr-3">
                 Guardado.
-            </jet-action-message>
+            </action-message>
 
-            <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <x-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Guardar
-            </jet-button>
+            </x-button>
         </template>
-    </jet-form-section>
+    </form-section>
 </template>
 
 <script>
-    import JetActionMessage from './../../Jetstream/ActionMessage'
-    import JetButton from './../../Jetstream/Button'
-    import JetFormSection from './../../Jetstream/FormSection'
-    import JetInput from './../../Jetstream/Input'
-    import JetInputError from './../../Jetstream/InputError'
-    import JetLabel from './../../Jetstream/Label'
+    import ActionMessage from './../../Shared/ActionMessage'
+    import XButton from './../../Shared/Button'
+    import FormSection from './../../Shared/FormSection'
+    import XInput from './../../Shared/Input'
+    import InputError from './../../Shared/InputError'
+    import XLabel from './../../Shared/Label'
 
     export default {
         components: {
-            JetActionMessage,
-            JetButton,
-            JetFormSection,
-            JetInput,
-            JetInputError,
-            JetLabel,
+            ActionMessage,
+            XButton,
+            FormSection,
+            XInput,
+            InputError,
+            XLabel,
         },
 
         data() {

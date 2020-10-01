@@ -1,5 +1,5 @@
 <template>
-    <jet-form-section @submitted="createCategory">
+    <form-section @submitted="createCategory">
 
         <template #title>
             Crear categoría
@@ -12,48 +12,48 @@
         <template #form>
             <!-- Name -->
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="name" value="Nombre" />
-                <jet-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" autocomplete="name" />
-                <jet-input-error :message="form.error('name')" class="mt-2" />
+                <x-label for="name" value="Nombre" />
+                <x-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" autocomplete="name" />
+                <input-error :message="form.error('name')" class="mt-2" />
             </div>
 
             <!-- Description -->
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="description" value="Descripción" />
-                <jet-input id="description" type="text" class="mt-1 block w-full" v-model="form.description" />
-                <jet-input-error :message="form.error('description')" class="mt-2" />
+                <x-label for="description" value="Descripción" />
+                <x-input id="description" type="text" class="mt-1 block w-full" v-model="form.description" />
+                <input-error :message="form.error('description')" class="mt-2" />
             </div>
         </template>
 
         <template #actions>
-            <jet-action-message :on="form.recentlySuccessful" class="mr-3">
+            <action-message :on="form.recentlySuccessful" class="mr-3">
                 Creada.
-            </jet-action-message>
+            </action-message>
 
-            <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <x-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Crear
-            </jet-button>
+            </x-button>
         </template>
 
-    </jet-form-section>
+    </form-section>
 </template>
 
 <script>
-    import JetFormSection from './../../Jetstream/FormSection'
-    import JetLabel from './../../Jetstream/Label'
-    import JetInput from './../../Jetstream/Input'
-    import JetInputError from './../../Jetstream/InputError'
-    import JetActionMessage from './../../Jetstream/ActionMessage'
-    import JetButton from './../../Jetstream/Button'
+    import FormSection from './../../Shared/FormSection'
+    import XLabel from './../../Shared/Label'
+    import XInput from './../../Shared/Input'
+    import InputError from './../../Shared/InputError'
+    import ActionMessage from './../../Shared/ActionMessage'
+    import XButton from './../../Shared/Button'
 
     export default {
         components: {
-            JetFormSection,
-            JetLabel,
-            JetInput,
-            JetInputError,
-            JetActionMessage,
-            JetButton,
+            FormSection,
+            XLabel,
+            XInput,
+            InputError,
+            ActionMessage,
+            XButton,
         },
 
         data() {

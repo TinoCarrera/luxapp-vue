@@ -16,19 +16,19 @@
 
                         <!-- Navigation Links -->
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <jet-nav-link href="/dashboard" :active="$page.currentRouteName == 'dashboard'">
+                            <nav-link href="/dashboard" :active="$page.currentRouteName == 'dashboard'">
                                 Dashboard
-                            </jet-nav-link>
-                            <jet-nav-link href="/categories" :active="$page.currentRouteName == 'categories'">
+                            </nav-link>
+                            <nav-link href="/categories" :active="$page.currentRouteName == 'categories'">
                                 Categorías
-                            </jet-nav-link>
+                            </nav-link>
                         </div>
                     </div>
 
                     <!-- Settings Dropdown -->
                     <div class="hidden sm:flex sm:items-center sm:ml-6">
                         <div class="ml-3 relative">
-                            <jet-dropdown align="right" width="48">
+                            <dropdown align="right" width="48">
                                 <template #trigger>
                                     <button v-if="$page.jetstream.managesProfilePhotos" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
                                         <img class="h-8 w-8 rounded-full object-cover" :src="$page.user.profile_photo_url" :alt="$page.user.name" />
@@ -51,20 +51,20 @@
                                         {{ $page.user.name }}
                                     </div>
 
-                                    <jet-dropdown-link href="/user/profile">
+                                    <dropdown-link href="/user/profile">
                                         Perfil
-                                    </jet-dropdown-link>
+                                    </dropdown-link>
 
                                     <div class="border-t border-gray-100"></div>
 
                                     <!-- Authentication -->
                                     <form @submit.prevent="logout">
-                                        <jet-dropdown-link as="button">
+                                        <dropdown-link as="button">
                                             Salir
-                                        </jet-dropdown-link>
+                                        </dropdown-link>
                                     </form>
                                 </template>
-                            </jet-dropdown>
+                            </dropdown>
                         </div>
                     </div>
 
@@ -83,12 +83,12 @@
             <!-- Responsive Navigation Menu -->
             <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                 <div class="pt-2 pb-3 space-y-1">
-                    <jet-responsive-nav-link href="/dashboard" :active="$page.currentRouteName == 'dashboard'">
+                    <responsive-nav-link href="/dashboard" :active="$page.currentRouteName == 'dashboard'">
                         Dashboard
-                    </jet-responsive-nav-link>
-                    <jet-responsive-nav-link href="/categories" :active="$page.currentRouteName == 'categories'">
+                    </responsive-nav-link>
+                    <responsive-nav-link href="/categories" :active="$page.currentRouteName == 'categories'">
                         Categorías
-                    </jet-responsive-nav-link>
+                    </responsive-nav-link>
                 </div>
 
                 <!-- Responsive Settings Options -->
@@ -105,15 +105,15 @@
                     </div>
 
                     <div class="mt-3 space-y-1">
-                        <jet-responsive-nav-link href="/user/profile" :active="$page.currentRouteName == 'profile.show'">
+                        <responsive-nav-link href="/user/profile" :active="$page.currentRouteName == 'profile.show'">
                             Perfil
-                        </jet-responsive-nav-link>
+                        </responsive-nav-link>
 
                         <!-- Authentication -->
                         <form method="POST" @submit.prevent="logout">
-                            <jet-responsive-nav-link as="button">
+                            <responsive-nav-link as="button">
                                 Salir
-                            </jet-responsive-nav-link>
+                            </responsive-nav-link>
                         </form>
                     </div>
                 </div>
@@ -123,7 +123,9 @@
         <!-- Page Heading -->
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <slot name="header"></slot>
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    <slot name="header"></slot>
+                </h2>
             </div>
         </header>
 
@@ -143,19 +145,17 @@
 </template>
 
 <script>
-    import JetDropdown from './../Jetstream/Dropdown'
-    import JetDropdownLink from './../Jetstream/DropdownLink'
-    import JetNavLink from './../Jetstream/NavLink'
-    import JetResponsiveNavLink from './../Jetstream/ResponsiveNavLink'
-    import FlashMessages from './../Shared/FlashMessages'
+    import Dropdown from './../Shared/Dropdown'
+    import DropdownLink from './../Shared/DropdownLink'
+    import NavLink from './../Shared/NavLink'
+    import ResponsiveNavLink from './../Shared/ResponsiveNavLink'
 
     export default {
         components: {
-            JetDropdown,
-            JetDropdownLink,
-            JetNavLink,
-            JetResponsiveNavLink,
-            FlashMessages,
+            Dropdown,
+            DropdownLink,
+            NavLink,
+            ResponsiveNavLink,
         },
 
         data() {

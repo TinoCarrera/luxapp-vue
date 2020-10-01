@@ -1,51 +1,48 @@
 <template>
     <app-layout>
-
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Categorías
-            </h2>
+            Categorías
         </template>
 
-        <jet-form-section @submitted="submit">
+        <form-section @submitted="updateCategory">
 
             <template #title>
                 Editar categoría
             </template>
 
             <template #description>
-                Edita la categoría que seleccionaste.
+                Actualiza o elimina la categoría seleccionada.
             </template>
 
             <template #form>
                 <!-- Name -->
                 <div class="col-span-6 sm:col-span-4">
-                    <jet-label for="name" value="Nombre" />
-                    <jet-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" autocomplete="name" />
-                    <jet-input-error :message="form.error('name')" class="mt-2" />
+                    <x-label for="name" value="Nombre" />
+                    <x-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" autocomplete="name" />
+                    <input-error :message="form.error('name')" class="mt-2" />
                 </div>
 
                 <!-- Description -->
                 <div class="col-span-6 sm:col-span-4">
-                    <jet-label for="description" value="Descripción" />
-                    <jet-input id="description" type="text" class="mt-1 block w-full" v-model="form.description" />
-                    <jet-input-error :message="form.error('description')" class="mt-2" />
+                    <x-label for="description" value="Descripción" />
+                    <x-input id="description" type="text" class="mt-1 block w-full" v-model="form.description" />
+                    <input-error :message="form.error('description')" class="mt-2" />
                 </div>
             </template>
 
             <template #actions>
 
-                <danger-button @click.native="confirmDestroy" class="mr-auto">Eliminar categoría</danger-button>
+                <danger-button @click.native="confirmDelete" class="mr-auto">Eliminar</danger-button>
 
-                <jet-action-message :on="form.recentlySuccessful" class="mr-3">
+                <action-message :on="form.recentlySuccessful" class="mr-3">
                     Editada.
-                </jet-action-message>
+                </action-message>
 
-                <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Editar
-                </jet-button>
+                <x-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    Actualizar
+                </x-button>
 
-                <confirmation :show="confirmingDestroy" @close="confirmingDestroy = false">
+                <confirmation :show="confirmingDelete" @close="confirmingDelete = false">
                     <template #title>
                         Eliminar categoría
                     </template>
@@ -53,10 +50,10 @@
                         ¿Estás seguro que quieres eliminar esta categoría?
                     </template>
                     <template #footer>
-                        <secondary-button @click.native="confirmingDestroy = false">
+                        <secondary-button @click.native="confirmingDelete = false">
                             Regresar
                         </secondary-button>
-                        <danger-button class="ml-2" @click.native="destroy" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                        <danger-button class="ml-2" @click.native="deleteCategory" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                             Continuar
                         </danger-button>
                     </template>
@@ -64,23 +61,21 @@
 
             </template>
 
-        </jet-form-section>
-
+        </form-section>
     </app-layout>
 </template>
 
 <script>
     import AppLayout from './../../Layouts/AppLayout'
-    import DangerButton from './../../Jetstream/DangerButton'
-    import SecondaryButton from './../../Jetstream/SecondaryButton'
+    import DangerButton from './../../Shared/DangerButton'
+    import SecondaryButton from './../../Shared/SecondaryButton'
     import Confirmation from './../../Shared/Confirmation'
-
-    import JetFormSection from './../../Jetstream/FormSection'
-    import JetLabel from './../../Jetstream/Label'
-    import JetInput from './../../Jetstream/Input'
-    import JetInputError from './../../Jetstream/InputError'
-    import JetActionMessage from './../../Jetstream/ActionMessage'
-    import JetButton from './../../Jetstream/Button'
+    import FormSection from './../../Shared/FormSection'
+    import XLabel from './../../Shared/Label'
+    import XInput from './../../Shared/Input'
+    import InputError from './../../Shared/InputError'
+    import ActionMessage from './../../Shared/ActionMessage'
+    import XButton from './../../Shared/Button'
 
     export default {
         components: {
@@ -88,41 +83,44 @@
             DangerButton,
             SecondaryButton,
             Confirmation,
-
-            JetFormSection,
-            JetLabel,
-            JetInput,
-            JetInputError,
-            JetActionMessage,
-            JetButton,
+            FormSection,
+            XLabel,
+            XInput,
+            InputError,
+            ActionMessage,
+            XButton,
         },
+
         props: {
             category: Object,
-            errors: Object,
         },
-        remember: 'form',
+
         data() {
             return {
-                confirmingDestroy: false,
-                sending: false,
+                confirmingDelete: false,
                 form: this.$inertia.form({
                     name: this.category.name,
                     description: this.category.description,
                 })
             }
         },
+
         methods: {
-            submit() {
-                this.sending = true
+            updateCategory() {
                 this.form.put('/categories/' + this.category.id)
-                    .then(() => this.sending = false)
+                    .then(() => {
+
+                    })
             },
-            confirmDestroy() {
-                this.confirmingDestroy = true
+
+            confirmDelete() {
+                this.confirmingDelete = true
             },
-            destroy() {
+            
+            deleteCategory() {
                 this.form.delete('/categories/' + this.category.id)
                     .then(() => {
+
                     })
             },
         },

@@ -1,5 +1,5 @@
 <template>
-    <jet-form-section @submitted="updateProfileInformation">
+    <form-section @submitted="updateProfileInformation">
         <template #title>
             Información de perfil
         </template>
@@ -16,7 +16,7 @@
                             ref="photo"
                             @change="updatePhotoPreview">
 
-                <jet-label for="photo" value="Foto" />
+                <x-label for="photo" value="Foto" />
 
                 <!-- Current Profile Photo -->
                 <div class="mt-2" v-show="! photoPreview">
@@ -30,62 +30,62 @@
                     </span>
                 </div>
 
-                <jet-secondary-button class="mt-2 mr-2" type="button" @click.native.prevent="selectNewPhoto">
+                <secondary-button class="mt-2 mr-2" type="button" @click.native.prevent="selectNewPhoto">
                     Seleccionar nueva foto
-                </jet-secondary-button>
+                </secondary-button>
 
-                <jet-secondary-button type="button" class="mt-2" @click.native.prevent="deletePhoto" v-if="$page.user.profile_photo_path">
+                <secondary-button type="button" class="mt-2" @click.native.prevent="deletePhoto" v-if="$page.user.profile_photo_path">
                     Quitar foto
-                </jet-secondary-button>
+                </secondary-button>
 
-                <jet-input-error :message="form.error('photo')" class="mt-2" />
+                <input-error :message="form.error('photo')" class="mt-2" />
             </div>
 
             <!-- Name -->
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="name" value="Nombre" />
-                <jet-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" autocomplete="name" />
-                <jet-input-error :message="form.error('name')" class="mt-2" />
+                <x-label for="name" value="Nombre" />
+                <x-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" autocomplete="name" />
+                <input-error :message="form.error('name')" class="mt-2" />
             </div>
 
             <!-- Email -->
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="email" value="Correo electrónico" />
-                <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" />
-                <jet-input-error :message="form.error('email')" class="mt-2" />
+                <x-label for="email" value="Correo electrónico" />
+                <x-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" />
+                <input-error :message="form.error('email')" class="mt-2" />
             </div>
         </template>
 
         <template #actions>
-            <jet-action-message :on="form.recentlySuccessful" class="mr-3">
+            <action-message :on="form.recentlySuccessful" class="mr-3">
                 Guardado.
-            </jet-action-message>
+            </action-message>
 
-            <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <x-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Guardar
-            </jet-button>
+            </x-button>
         </template>
-    </jet-form-section>
+    </form-section>
 </template>
 
 <script>
-    import JetButton from './../../Jetstream/Button'
-    import JetFormSection from './../../Jetstream/FormSection'
-    import JetInput from './../../Jetstream/Input'
-    import JetInputError from './../../Jetstream/InputError'
-    import JetLabel from './../../Jetstream/Label'
-    import JetActionMessage from './../../Jetstream/ActionMessage'
-    import JetSecondaryButton from './../../Jetstream/SecondaryButton'
+    import XButton from './../../Shared/Button'
+    import FormSection from './../../Shared/FormSection'
+    import XInput from './../../Shared/Input'
+    import InputError from './../../Shared/InputError'
+    import XLabel from './../../Shared/Label'
+    import ActionMessage from './../../Shared/ActionMessage'
+    import SecondaryButton from './../../Shared/SecondaryButton'
 
     export default {
         components: {
-            JetActionMessage,
-            JetButton,
-            JetFormSection,
-            JetInput,
-            JetInputError,
-            JetLabel,
-            JetSecondaryButton,
+            ActionMessage,
+            XButton,
+            FormSection,
+            XInput,
+            InputError,
+            XLabel,
+            SecondaryButton,
         },
 
         props: ['name', 'email'],

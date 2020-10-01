@@ -1,25 +1,21 @@
 <template>
     <app-layout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Perfil
-            </h2>
+            Perfil
         </template>
-
+        
         <div>
-            <update-profile-information-form
-                        :name="$page.user.name"
-                        :email="$page.user.email" />
+            <update-profile-information-form :name="$page.user.name" :email="$page.user.email" />
 
-            <jet-section-border />
+            <section-border />
 
             <update-password-form class="mt-10 sm:mt-0" />
 
-            <jet-section-border />
+            <section-border />
 
             <logout-other-browser-sessions-form :sessions="sessions" class="mt-10 sm:mt-0" />
 
-            <jet-section-border />
+            <section-border />
 
             <delete-user-form class="mt-10 sm:mt-0" />
         </div>
@@ -29,7 +25,7 @@
 <script>
     import AppLayout from './../../Layouts/AppLayout'
     import DeleteUserForm from './DeleteUserForm'
-    import JetSectionBorder from './../../Jetstream/SectionBorder'
+    import SectionBorder from './../../Shared/SectionBorder'
     import LogoutOtherBrowserSessionsForm from './LogoutOtherBrowserSessionsForm'
     import UpdatePasswordForm from './UpdatePasswordForm'
     import UpdateProfileInformationForm from './UpdateProfileInformationForm'
@@ -40,7 +36,7 @@
         components: {
             AppLayout,
             DeleteUserForm,
-            JetSectionBorder,
+            SectionBorder,
             LogoutOtherBrowserSessionsForm,
             UpdatePasswordForm,
             UpdateProfileInformationForm,
