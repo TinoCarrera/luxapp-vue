@@ -27,17 +27,18 @@
                             </a>
                         </div>
 
-                        <!-- Navigation Links -->
-                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <nav-link href="/dashboard" :active="$page.currentRouteName == 'dashboard'">
-                                Dashboard
-                            </nav-link>
-                            <nav-link href="/categories" :active="$page.currentRouteName == 'categories'">
-                                Categorías
-                            </nav-link>
-                        </div>
                     </div>
 
+                    <!-- Searchbar -->
+                    <div class="flex items-center mr-20 text-gray-600">
+                        <div class="relative bg-gray-100 px-2 py-1 rounded border-2 border-gray-600">
+                            <svg class="w-5 h-5 absolute left-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                            <input type="text" placeholder="Buscar..." class="ml-7 bg-transparent">
+                        </div>
+                    </div>
+                    
                     <!-- Settings Dropdown -->
                     <div class="hidden sm:flex sm:items-center sm:ml-6">
                         <div class="ml-3 relative">
@@ -163,7 +164,7 @@
                 </span>
                 <span
                     @click="isOpen = false"
-                    class="flex items-center p-4 hover:bg-indigo-500 hover:text-white">
+                    class="flex items-center p-4 hover:bg-gray-600 hover:text-white">
                     <span class="mr-2">
                         <svg
                             fill="none"
@@ -186,7 +187,7 @@
                 </span>
                 <span
                     @click="isOpen = false"
-                    class="flex items-center p-4 hover:bg-indigo-500 hover:text-white">
+                    class="flex items-center p-4 hover:bg-gray-600 hover:text-white">
                     <span class="mr-2">
                         <svg
                             fill="none"
@@ -209,7 +210,7 @@
                 </span>
                 <span
                     @click="isOpen = false"
-                    class="flex items-center p-4 hover:bg-indigo-500 hover:text-white">
+                    class="flex items-center p-4 hover:bg-gray-600 hover:text-white">
                     <span class="mr-2">
                         <svg
                             fill="none"
@@ -228,7 +229,7 @@
                 </span>
                 <span
                     @click="isOpen = false"
-                    class="flex items-center p-4 hover:bg-indigo-500 hover:text-white">
+                    class="flex items-center p-4 hover:bg-gray-600 hover:text-white">
                     <span class="mr-2">
                         <svg
                             fill="none"

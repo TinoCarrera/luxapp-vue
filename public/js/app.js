@@ -2213,6 +2213,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -23420,47 +23421,51 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _vm._m(0)
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
-                  },
-                  [
-                    _c(
-                      "nav-link",
-                      {
-                        attrs: {
-                          href: "/dashboard",
-                          active: _vm.$page.currentRouteName == "dashboard"
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                            Dashboard\n                        "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "nav-link",
-                      {
-                        attrs: {
-                          href: "/categories",
-                          active: _vm.$page.currentRouteName == "categories"
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                            Categorías\n                        "
-                        )
-                      ]
-                    )
-                  ],
-                  1
-                )
+                ])
               ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "flex items-center mr-20 text-gray-600" },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "relative bg-gray-100 px-2 py-1 rounded border-2 border-gray-600"
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "w-5 h-5 absolute left-0 ml-2",
+                          attrs: {
+                            fill: "none",
+                            stroke: "currentColor",
+                            viewBox: "0 0 24 24",
+                            xmlns: "http://www.w3.org/2000/svg"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round",
+                              "stroke-width": "2",
+                              d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "ml-7 bg-transparent",
+                        attrs: { type: "text", placeholder: "Buscar..." }
+                      })
+                    ]
+                  )
+                ]
+              ),
               _vm._v(" "),
               _c(
                 "div",
@@ -23871,7 +23876,7 @@ var render = function() {
                 "span",
                 {
                   staticClass:
-                    "flex items-center p-4 hover:bg-indigo-500 hover:text-white",
+                    "flex items-center p-4 hover:bg-gray-600 hover:text-white",
                   on: {
                     click: function($event) {
                       _vm.isOpen = false
@@ -23922,7 +23927,7 @@ var render = function() {
                 "span",
                 {
                   staticClass:
-                    "flex items-center p-4 hover:bg-indigo-500 hover:text-white",
+                    "flex items-center p-4 hover:bg-gray-600 hover:text-white",
                   on: {
                     click: function($event) {
                       _vm.isOpen = false
@@ -23973,7 +23978,7 @@ var render = function() {
                 "span",
                 {
                   staticClass:
-                    "flex items-center p-4 hover:bg-indigo-500 hover:text-white",
+                    "flex items-center p-4 hover:bg-gray-600 hover:text-white",
                   on: {
                     click: function($event) {
                       _vm.isOpen = false
@@ -24014,7 +24019,7 @@ var render = function() {
                 "span",
                 {
                   staticClass:
-                    "flex items-center p-4 hover:bg-indigo-500 hover:text-white",
+                    "flex items-center p-4 hover:bg-gray-600 hover:text-white",
                   on: {
                     click: function($event) {
                       _vm.isOpen = false
